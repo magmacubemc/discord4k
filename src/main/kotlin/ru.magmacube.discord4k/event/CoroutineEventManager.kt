@@ -91,4 +91,5 @@ class CoroutineEventManager(
             }
         }.also { register(it) }
     }
+    inline fun <reified T : GenericEvent> on(timeout: Duration? = null, crossinline consumer: suspend CoroutineEventListener.(T) -> Unit) = listener<T>(timeout, consumer)
 }
